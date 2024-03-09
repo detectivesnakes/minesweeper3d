@@ -1,20 +1,30 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using TMPro;
 using UnityEngine;
 
 public class Handler : MonoBehaviour {
     [SerializeField] private Transform Tile;
     [SerializeField] private Transform GameHolder;
+    [SerializeField] GameObject gameover;
+    [SerializeField] GameObject mainui;
 
     private List<Tile> TileBank = new();
     public string difficulty = ("");
     public int width;
     public int height;
     public int num_mines;
-
     public float size = 1f;
 
-    // generates the minefield
+    public void Start()
+    {
+        mainui = GameObject.Find("MainUI");
+        gameover = GameObject.Find("GameOver");
+        gameover.SetActive(false);
+    }
+
     public void NewGame(int width, int height, int num_mines) {
         this.width = width;
         this.height = height;
@@ -101,6 +111,10 @@ public class Handler : MonoBehaviour {
         foreach (Tile tile in TileBank){
             tile.Reveal();
         }
+        mainui.SetActive(false);
+        gameover.SetActive(true);
+        StartCoroutine(DelayLoss());
+        StopCoroutine(DelayLoss());
     }
 
     public void CheckWinCon() {
@@ -117,5 +131,17 @@ public class Handler : MonoBehaviour {
                 tile.FlagMine();
             }
         }
+    }
+
+    IEnumerator DelayLoss() {
+        Debug.Log("Coroutine started " + Time.time);
+        yield return new WaitForSeconds(3.0f);
+        gameover.SetActive(false);
+        for (var i = GameHolder.transform.childCount - 1; i >= 0; i--)
+        {
+            Object.Destroy(GameHolder.transform.GetChild(i).gameObject);
+        }
+        yield return new WaitForSeconds(.1f);
+        mainui.SetActive(true);
     }
 }

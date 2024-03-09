@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3702544e019034016ab3cd10b40eef8d, type: 2}
+  - {fileID: 2100000, guid: 321f76fa242902c4c90a5779d7aeaa29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,7 +120,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clicked_tiles: []
-  textures: []
+  textures:
+  - {fileID: 2800000, guid: 963e13e222a11462ca91badeaabb503e, type: 3}
+  - {fileID: 2800000, guid: ec7fb922f59b3433fba5f3a58fd6238f, type: 3}
+  - {fileID: 2800000, guid: 5f54223e3219d4295b608573c5ad4467, type: 3}
+  - {fileID: 2800000, guid: 58831a287e3eb49e48b5717f1acb4b73, type: 3}
+  - {fileID: 2800000, guid: 2285834af71c24301b6a3ba12340fbc1, type: 3}
+  - {fileID: 2800000, guid: 7ef810251b0d3498097137bf5e682b23, type: 3}
+  - {fileID: 2800000, guid: 196bdbf0ad9fa4302a202aa679d6edf5, type: 3}
+  - {fileID: 2800000, guid: a69efca61e99542678b82a8889067589, type: 3}
+  - {fileID: 2800000, guid: d459b9c0e106546108a192a1aff8e1d8, type: 3}
+  - {fileID: 2800000, guid: 579ab4cbc4fa64a2788484d13a30404f, type: 3}
+  - {fileID: 2800000, guid: 44e60af920a2a42b49134ede558c9a5d, type: 3}
+  - {fileID: 2800000, guid: 7570afb0258424ecf8e3174f13ee2c98, type: 3}
+  - {fileID: 2800000, guid: 372a240294f7545f68b50c9cd26d65fd, type: 3}
+  - {fileID: 2800000, guid: b0af30d3c93374f7fad3c361f2654ef9, type: 3}
   gamehandler: {fileID: 0}
   flagged: 0
   is_mine: 0

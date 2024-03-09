@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,6 +17,7 @@ public class Tile : MonoBehaviour {
     public bool active = true;
     public int mine_count = 0;
 
+
     private void Start() {
         tileRenderer = GetComponent<Renderer>();
     }
@@ -29,13 +31,11 @@ public class Tile : MonoBehaviour {
             flagged = !flagged;
             if (flagged) {
                 Debug.Log("FLAGGED");
-                tileRenderer.material.color = Color.blue;
-                //spriterenderer.sprite = flagged_tile;
+                tileRenderer.material.mainTexture = textures[9];
             }
             else {
                 Debug.Log("UNFLAGGED");
-                tileRenderer.material.color = Color.white;
-                //spriterenderer.sprite = unclicked_tile;
+                tileRenderer.material.mainTexture = textures[13];
             }
         }
     }
@@ -45,17 +45,15 @@ public class Tile : MonoBehaviour {
             active = false;
             if (is_mine) {
                 Debug.Log("MINE FOUND! PLAYER DEAD");
-                tileRenderer.material.color = Color.red;
-                //spriterenderer.sprite = real_mine;
+                tileRenderer.material.mainTexture = textures[12];
                 gamehandler.LoseCon();
             } else {
                 Debug.Log("CLEAR!");
-                tileRenderer.material.color = Color.grey;
-                //spriterenderer.sprite = clicked_tiles[mine_count];
                 if (mine_count == 0) {
                     gamehandler.ClearEmpty(this);
                 }
                 gamehandler.CheckWinCon();
+                tileRenderer.material.mainTexture = textures[mine_count];
             }
         }
     }
@@ -64,21 +62,19 @@ public class Tile : MonoBehaviour {
         if (active) {
             active = false;
             if (is_mine & !flagged) {
-                tileRenderer.material.color = Color.magenta;
-                //spriterenderer.sprite = mine_tile;
+                tileRenderer.material.mainTexture = textures[10];
             }
             else if (flagged & !is_mine) {
-                tileRenderer.material.color = Color.yellow;
-                //spriterenderer.sprite = wrong_mine;
+                tileRenderer.material.mainTexture = textures[11];
             }
         }
     }
 
     public void FlagMine() {
-        if (is_mine) {
+        if (is_mine == true) {
             flagged = true;
-            tileRenderer.material.color = Color.blue;
-            //spriterenderer.sprite = flagged_tile;
+            Debug.Log("FLAGGED MINE");
+            tileRenderer.material.mainTexture = textures[9];
         }
     }
 }
